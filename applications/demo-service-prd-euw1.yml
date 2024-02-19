@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/bivas/demo-service.git
     targetRevision: HEAD
-    path: .meta/units/service/prd/euw1
+    path: .meta/units/service/envs/prd/euw1
 
   destination:
     server: https://772E58A1AA264AE772C4EB4F4DCC6E9C.sk1.eu-west-1.eks.amazonaws.com
