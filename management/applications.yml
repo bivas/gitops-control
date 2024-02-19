@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: applications
+  namespace: default
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/bivas/gitops-control.git
+    targetRevision: HEAD
+    path: applications
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: applications
+
+  syncPolicy:
+    automated:
+      prune: true # Enables automatic pruning of resources
+      selfHeal: true # Enables auto-healing of discrepancies
+
+    syncOptions: # Add sync options as per your requirements
+      - CreateNamespace=true # If you want to automatically create the namespace
