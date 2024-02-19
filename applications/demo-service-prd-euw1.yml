@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: demo-service-prd-euw1
-  namespace: applications
+  namespace: argocd
 spec:
   project: demo-service
   source:
