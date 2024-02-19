@@ -4,7 +4,7 @@ metadata:
   name: demo-service-prd-euw1
   namespace: argocd
 spec:
-  project: demo-service
+  project: default
   source:
     repoURL: https://github.com/bivas/demo-service.git
     targetRevision: HEAD
