@@ -11,7 +11,7 @@ spec:
     path: .meta/units/service/envs/prd/euw1
 
   destination:
-    server: https://772E58A1AA264AE772C4EB4F4DCC6E9C.sk1.eu-west-1.eks.amazonaws.com
+    server: https://daas-euw1-control-plane:6443
     namespace: demo-service
 
   syncPolicy:
