@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: daas-prd-euw1
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/bivas/gitops-control.git
+        revision: test
+        directories:
+          - path: management/environments/prd/euw1/platforms.json
+  template:
+    metadata:
+      name: '{{index .path.segments 2}}-{{index .path.segments 3}}-{{name}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/bivas/demo-service.git
+        targetRevision: HEAD
+        path: .meta/units/service/envs/{{index .path.segments 2}}/{{index .path.segments 3}}
+      destination:
+        server: '{{.daas-url}}'
+        namespace: demo-service

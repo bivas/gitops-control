@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: prd
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - region: euw1
+  template:
+    metadata:
+      name: '{{name}}-{{.region}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/bivas/gitops-control.git
+        targetRevision: test
+        path: management/environments/{{name}}/{{.region}}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
