@@ -48,8 +48,8 @@ kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
 
 # change argocd admin password
 echo "Change argocd admin password ..."
-kubectl patch secret -n argocd argocd-secret \
-  -p '{"stringData": { "admin.password": "'$(htpasswd -bnBC 10 "" adminadmin | tr -d ':\n')'"}}'
+# shellcheck disable=SC2046
+kubectl patch secret -n argocd argocd-secret -p '{"stringData": { "admin.password": "'$(htpasswd -bnBC 10 "" adminadmin | tr -d ':\n')'"}}'
 
 
 # connect argocd to managed clusters if not already connected
