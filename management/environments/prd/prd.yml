@@ -4,6 +4,8 @@ metadata:
   name: prd
   namespace: argocd
 spec:
+  goTemplate: true
+  goTemplateOptions: [ "missingkey=error" ]
   generators:
     - list:
         elements:

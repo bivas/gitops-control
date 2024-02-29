@@ -4,6 +4,8 @@ metadata:
   name: daas-prd-euw1
   namespace: argocd
 spec:
+  goTemplate: true
+  goTemplateOptions: [ "missingkey=error" ]
   generators:
     - git:
         repoURL: https://github.com/bivas/gitops-control.git

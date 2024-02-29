@@ -4,6 +4,8 @@ metadata:
   name: environments
   namespace: argocd
 spec:
+  goTemplate: true
+  goTemplateOptions: [ "missingkey=error" ]
   generators:
     - list:
         elements:
@@ -21,6 +23,6 @@ spec:
         server: https://kubernetes.default.svc
         namespace: argocd
       syncPolicy:
-          automated:
-            prune: true
-            selfHeal: true
+        automated:
+          prune: true
+          selfHeal: true
