@@ -14,7 +14,7 @@ spec:
           - path: management/environments/prd/euw1/platforms.json
   template:
     metadata:
-      name: '{{index .path.segments 2}}-{{index .path.segments 3}}-{{name}}'
+      name: "{{index .path.segments 2}}-{{index .path.segments 3}}-{{name}}"
     spec:
       project: default
       source:
@@ -22,5 +22,5 @@ spec:
         targetRevision: HEAD
         path: .meta/units/service/envs/{{index .path.segments 2}}/{{index .path.segments 3}}
       destination:
-        server: '{{.daas-url}}'
+        server: {{.daas-url}}
         namespace: demo-service
