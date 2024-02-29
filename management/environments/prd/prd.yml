@@ -12,7 +12,7 @@ spec:
           - region: euw1
   template:
     metadata:
-      name: "{{name}}-{{.region}}"
+      name: "{{.name}}-{{.region}}"
     spec:
       project: default
       source:
