@@ -10,15 +10,16 @@ spec:
     - list:
         elements:
           - environment: prd
+            region: euw1
   template:
     metadata:
-      name: "{{.environment}}"
+      name: "{{.environment}}-{{.region}}"
     spec:
       project: default
       source:
         repoURL: https://github.com/bivas/gitops-control.git
         targetRevision: test
-        path: management/environments/{{.environment}}
+        path: management/environments/{{.environment}}/{{.region}}
       destination:
         server: https://kubernetes.default.svc
         namespace: argocd
