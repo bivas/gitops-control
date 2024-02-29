@@ -11,7 +11,6 @@ spec:
   template:
     metadata:
       name: {{.environment}}
-      namespace: argocd
     spec:
       project: default
       source:
