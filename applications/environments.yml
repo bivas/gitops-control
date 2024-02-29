@@ -12,7 +12,7 @@ spec:
           - environment: prd
   template:
     metadata:
-      name: {{.environment}}
+      name: "{{.environment}}"
     spec:
       project: default
       source:
