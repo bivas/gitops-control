@@ -23,7 +23,7 @@ spec:
                 - path: management/environments/prd/euw1/config/platforms.json
   template:
     metadata:
-      name: 'daas-{{index .control.path.segments 3}}-{{index .control.path.segments 4}}'
+      name: 'daas-{{index .control.path.segments 5}}-{{index .control.path.segments 6}}'
     spec:
       project: default
       source:
@@ -32,7 +32,7 @@ spec:
         path: '{{.control.path.path}}'
       destination:
         server: https://daas-euw1-control-plane:6443
-        namespace: '{{index .control.path.segments 3}}-{{index .control.path.segments 4}}'
+        namespace: '{{index .control.path.segments 5}}-{{index .control.path.segments 6}}'
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
