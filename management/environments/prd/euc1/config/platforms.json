@@ -1,3 +1,5 @@
 {
-  "daas-url": "https://daas-euc1-control-plane:6443"
+  "daas": {
+    "url": "https://daas-euc1-control-plane:6443"
+  }
 }
