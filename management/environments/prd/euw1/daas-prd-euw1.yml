@@ -22,5 +22,5 @@ spec:
         targetRevision: HEAD
         path: .meta/units/service/envs/prd/euw1
       destination:
-        server: "{{.daas-url}}"
+        server: "{{.daas}}"
         namespace: demo-service
