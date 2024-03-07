@@ -10,26 +10,27 @@ spec:
     - git:
         repoURL: https://github.com/bivas/gitops-control.git
         revision: test
+        pathParamPrefix: control
         directories:
           - path: "management/environments/prd/euw1/daas/**"
     - git:
         repoURL: https://github.com/bivas/gitops-control.git
         revision: test
+        pathParamPrefix: config
         files:
           - path: management/environments/prd/euw1/config/platforms.json
-        pathParamPrefix: config
   template:
     metadata:
-      name: 'daas-{{index .path.segments 0}}-{{index .path.segments 1}}'
+      name: 'daas-{{index .control.path.segments 0}}-{{index .control.path.segments 1}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/bivas/gitops-control.git
         targetRevision: test
-        path: '{{.path.path}}'
+        path: '{{.control.path.path}}'
       destination:
         server: '{{.config.daas.url}}'
-        namespace: '{{index .path.segments 0}}-{{index .path.segments 1}}'
+        namespace: '{{index .control.path.segments 0}}-{{index .control.path.segments 1}}'
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
