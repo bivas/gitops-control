@@ -16,7 +16,7 @@ spec:
     metadata:
       name: "prd-euw1-cp"
       labels:
-        platform.bivas.io/control-plane: cp
+        platform.io/control-plane: cp
     spec:
       project: default
       source:

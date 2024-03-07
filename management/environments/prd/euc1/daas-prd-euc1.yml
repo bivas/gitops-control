@@ -16,7 +16,7 @@ spec:
     metadata:
       name: "prd-euc1-daas"
       labels:
-        platform.bivas.io/control-plane: daas
+        platform.io/control-plane: daas
     spec:
       project: default
       source:
