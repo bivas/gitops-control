@@ -11,6 +11,8 @@ spec:
         elements:
           - environment: prd
             region: euw1
+          - environment: prd
+            region: euc1
   template:
     metadata:
       name: "{{.environment}}-{{.region}}"
