@@ -23,6 +23,8 @@ spec:
   template:
     metadata:
       name: 'daas-{{index .control.path.segments 5}}-{{index .control.path.segments 6}}'
+      labels:
+        platform.bivas.io/control-plane: daas
     spec:
       project: default
       source:
