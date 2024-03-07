@@ -19,7 +19,7 @@ spec:
           - path: "management/environments/prd/euw1/daas/**"
   template:
     metadata:
-      name: 'daas-{{index .path.segments 5}}-{{index .path.segments 6}}'
+      name: 'daas-{{index .path.segments 0}}-{{index .path.segments 1}}'
     spec:
       project: default
       source:
@@ -28,7 +28,7 @@ spec:
         path: '{{.path.path}}'
       destination:
         server: '{{.daas.url}}'
-        namespace: '{{index .path.segments 5}}-{{index .path.segments 6}}'
+        namespace: '{{index .path.segments 0}}-{{index .path.segments 1}}'
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
