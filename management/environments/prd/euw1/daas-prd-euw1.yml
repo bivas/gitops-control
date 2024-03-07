@@ -18,9 +18,9 @@ spec:
           - git:
               repoURL: https://github.com/bivas/gitops-control.git
               revision: test
-              pathParamPrefix: config
               files:
                 - path: management/environments/prd/euw1/config/platforms.json
+              pathParamPrefix: config
   template:
     metadata:
       name: 'daas-{{index .control.path.segments 5}}-{{index .control.path.segments 6}}'
