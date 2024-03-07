@@ -24,3 +24,6 @@ spec:
       destination:
         server: '{{.daas.url}}'
         namespace: applications
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true

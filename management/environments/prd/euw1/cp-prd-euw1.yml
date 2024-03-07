@@ -26,3 +26,6 @@ spec:
       destination:
         server: '{{.cp.url}}'
         namespace: buckets
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
