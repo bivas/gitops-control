@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: daas-prd-euw1
+  name: daas-prd-euc1
   namespace: argocd
 spec:
   goTemplate: true
@@ -11,18 +11,16 @@ spec:
         repoURL: https://github.com/bivas/gitops-control.git
         revision: test
         files:
-          - path: management/environments/prd/euw1/config/platforms.json
+          - path: management/environments/prd/euc1/config/platforms.json
   template:
     metadata:
-      name: "prd-euw1-daas"
+      name: "prd-euc1-daas"
     spec:
       project: default
       source:
         repoURL: https://github.com/bivas/gitops-control.git
         targetRevision: test
-        directory:
-          recurse: true
-        path: management/environments/prd/euw1/daas/
+        path: management/environments/prd/euc1/daas
       destination:
         server: '{{.daas.url}}'
         namespace: applications

@@ -1,28 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: daas-prd-euw1
+  name: [repo-id]-[du-name]-[control-plane]
   namespace: argocd
 spec:
   goTemplate: true
   goTemplateOptions: [ "missingkey=error" ]
   generators:
-    - git:
+    - git: # reads control plane url from provisioner config
         repoURL: https://github.com/bivas/gitops-control.git
         revision: test
         files:
           - path: management/environments/prd/euw1/config/platforms.json
   template:
     metadata:
-      name: "prd-euw1-daas"
+      name: "[repo-id]-[du-name]-[control-plane]"
     spec:
       project: default
       source:
         repoURL: https://github.com/bivas/gitops-control.git
-        targetRevision: test
-        directory:
-          recurse: true
-        path: management/environments/prd/euw1/daas/
+        targetRevision: HEAD
+        path: management/environments/prd/euw1/[control-plane]/[repo-id]/[du-name]
       destination:
-        server: '{{.daas.url}}'
-        namespace: applications
+        server: '{{.[control-plane].url}}'
+        namespace: "[repo-id]-[du-name]"
