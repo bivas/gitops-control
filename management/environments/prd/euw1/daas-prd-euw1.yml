@@ -12,20 +12,23 @@ spec:
         revision: test
         files:
           - path: management/environments/prd/euw1/config/platforms.json
+    - git:
+        repoURL: https://github.com/bivas/gitops-control.git
+        revision: test
+        directories:
+          - path: "management/environments/prd/euw1/daas/**"
   template:
     metadata:
-      name: "prd-euw1-daas"
+      name: 'daas-{{index .path.segments 5}}-{{index .path.segments 6}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/bivas/gitops-control.git
         targetRevision: test
-        directory:
-          recurse: true
-        path: management/environments/prd/euw1/daas/
+        path: '{{.path.path}}'
       destination:
         server: '{{.daas.url}}'
-        namespace: applications
+        namespace: '{{index .path.segments 5}}-{{index .path.segments 6}}'
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
