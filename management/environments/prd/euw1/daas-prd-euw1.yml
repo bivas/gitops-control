@@ -31,7 +31,7 @@ spec:
         targetRevision: test
         path: '{{.control.path.path}}'
       destination:
-        server: '{{.config.daas.url}}'
+        server: https://daas-euw1-control-plane:6443
         namespace: '{{index .control.path.segments 0}}-{{index .control.path.segments 1}}'
       syncPolicy:
         syncOptions:
