@@ -3,6 +3,8 @@ kind: ApplicationSet
 metadata:
   name: environments
   namespace: argocd
+  labels:
+    platform.io/control-plane: governance
 spec:
   goTemplate: true
   goTemplateOptions: [ "missingkey=error" ]
@@ -16,6 +18,8 @@ spec:
   template:
     metadata:
       name: "{{.environment}}-{{.region}}"
+      labels:
+        platform.io/control-plane: provisioner
     spec:
       project: default
       source:
