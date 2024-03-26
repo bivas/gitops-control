@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: environments
+  namespace: argocd
+  labels:
+    platform.io/control-plane: governance
+spec:
+  goTemplate: true
+  goTemplateOptions: [ "missingkey=error" ]
+  generators:
+    - list:
+        elements:
+          - environment: prd
+            region: euw1
+          - environment: prd
+            region: euc1
+  template:
+    metadata:
+      name: "{{.environment}}-{{.region}}"
+      labels:
+        platform.io/control-plane: provisioner
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/bivas/gitops-control.git
+        targetRevision: test
+        path: management/environments/{{.environment}}/{{.region}}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

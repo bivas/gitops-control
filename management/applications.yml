@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: applications
   namespace: argocd
+  labels:
+    platform.io/control-plane: governance
 spec:
   project: default
   source:

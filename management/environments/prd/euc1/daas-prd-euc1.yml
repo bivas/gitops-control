@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: daas-prd-euc1
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: [ "missingkey=error" ]
+  generators:
+    - git:
+        repoURL: https://github.com/bivas/gitops-control.git
+        revision: HEAD
+        files:
+          - path: management/environments/prd/euc1/config/platforms.json
+  template:
+    metadata:
+      name: "prd-euc1-daas"
+      labels:
+        platform.io/control-plane: daas
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/bivas/gitops-control.git
+        targetRevision: HEAD
+        path: management/environments/prd/euc1/daas
+      destination:
+        server: '{{.daas.url}}'
+        namespace: applications
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true

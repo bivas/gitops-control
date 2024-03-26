@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cp-prd-euw1
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: [ "missingkey=error" ]
+  generators:
+    - git:
+        repoURL: https://github.com/bivas/gitops-control.git
+        revision: HEAD
+        files:
+          - path: management/environments/prd/euw1/config/platforms.json
+  template:
+    metadata:
+      name: "prd-euw1-cp"
+      labels:
+        platform.io/control-plane: cp
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/bivas/gitops-control.git
+        targetRevision: HEAD
+        directory:
+          recurse: true
+        path: management/environments/prd/euw1/cp
+      destination:
+        server: '{{.cp.url}}'
+        namespace: buckets
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
