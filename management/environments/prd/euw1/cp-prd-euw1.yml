@@ -9,7 +9,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/bivas/gitops-control.git
-        revision: test
+        revision: HEAD
         files:
           - path: management/environments/prd/euw1/config/platforms.json
   template:
@@ -21,7 +21,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/bivas/gitops-control.git
-        targetRevision: test
+        targetRevision: HEAD
         directory:
           recurse: true
         path: management/environments/prd/euw1/cp
