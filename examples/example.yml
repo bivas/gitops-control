@@ -9,7 +9,7 @@ spec:
   generators:
     - git: # reads control plane url from provisioner config
         repoURL: https://github.com/bivas/gitops-control.git
-        revision: test
+        revision: HEAD
         files:
           - path: management/environments/prd/euw1/config/platforms.json
   template:
