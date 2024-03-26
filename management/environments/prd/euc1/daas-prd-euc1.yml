@@ -9,7 +9,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/bivas/gitops-control.git
-        revision: test
+        revision: HEAD
         files:
           - path: management/environments/prd/euc1/config/platforms.json
   template:
@@ -21,7 +21,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/bivas/gitops-control.git
-        targetRevision: test
+        targetRevision: HEAD
         path: management/environments/prd/euc1/daas
       destination:
         server: '{{.daas.url}}'
