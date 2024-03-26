@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/bivas/gitops-control.git
-    targetRevision: test
+    targetRevision: HEAD
     path: applications
 
   destination:
